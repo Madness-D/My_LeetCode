@@ -32,20 +32,33 @@ public:
         // }
         // return res;
 
-        //上面用到了三个数组，优化成1个
+        // //上面用到了三个数组，优化成1个
+        // int len=nums.size();
+        // vector<int> res(len);
+        // int temp=1;
+        // res[0]=1;
+        // for(int i=1;i<len;++i){
+        //     temp*=nums[i-1];
+        //     res[i]=temp;
+        // }//此时res内存的前缀积
+        // //再逆序遍历一次，乘上后缀积
+        // temp=1;
+        // for(int i=len-2;i>=0;--i){
+        //     temp*=nums[i+1];
+        //     res[i]*=temp;
+        // }
+        // return res;
+
+        //再优化，只遍历一次
         int len=nums.size();
-        vector<int> res(len);
-        int temp=1;
-        res[0]=1;
-        for(int i=1;i<len;++i){
-            temp*=nums[i-1];
-            res[i]=temp;
-        }//此时res内存的前缀积
-        //再逆序遍历一次，乘上后缀积
-        temp=1;
-        for(int i=len-2;i>=0;--i){
-            temp*=nums[i+1];
-            res[i]*=temp;
+        vector<int> res(len,1);//后面有res[i]*=的操作，需要初始化为1
+        int l=1,r=1;       
+        for(int i=0;i<len;++i){
+            res[i]*=l;
+            l*=nums[i];
+
+            res[len-1-i]*=r;
+            r*=nums[len-1-i];
         }
         return res;
 
