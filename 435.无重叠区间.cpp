@@ -18,7 +18,9 @@ public:
         }
 
         sort(intervals.begin(),intervals.end(),cmp);
-
+        // sort(intervals.begin(), intervals.end(), [](const auto& u, const auto& v) {
+        //     return u[1] < v[1];
+        // });
         int n = intervals.size();
         int right = intervals[0][1];//初始值
         int ans = 1;
