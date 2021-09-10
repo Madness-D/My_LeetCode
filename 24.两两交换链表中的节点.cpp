@@ -18,23 +18,33 @@
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
-        ListNode* Dummy=new ListNode(0);//哑节点
-        Dummy->next=head;
+    //     ListNode* Dummy=new ListNode(0);//哑节点
+    //     Dummy->next=head;
 
-        ListNode* curr=Dummy;
-        while(curr->next!=nullptr && curr->next->next!=nullptr){
-            ListNode* n1=curr->next;
-            ListNode* n2=curr->next->next;
-            //curr->next=n1->next
-            //curr->next=n2;
-            curr->next=curr->next->next;
-            //顺序问题
-            n1->next=n2->next;
-            n2->next=n1;
-            curr=n1;
-       }
+    //     ListNode* curr=Dummy;
+    //     while(curr->next!=nullptr && curr->next->next!=nullptr){
+    //         ListNode* n1=curr->next;
+    //         ListNode* n2=curr->next->next;
+    //         //curr->next=n1->next
+    //         //curr->next=n2;
+    //         curr->next=curr->next->next;
+    //         //顺序问题
+    //         n1->next=n2->next;
+    //         n2->next=n1;
+    //         curr=n1;
+    //    }
 
-        return Dummy->next;
+    //     return Dummy->next;
+
+    //递归
+    //递归边界：链表中没有元素或只有一个元素
+        if(head==nullptr||head->next==nullptr){
+            return head;
+        }
+        ListNode* newHead = head->next;
+        head->next = swapPairs(newHead->next);//连到后面已经交换的链表
+        newHead->next = head;
+        return newHead;
 
     }
 };
