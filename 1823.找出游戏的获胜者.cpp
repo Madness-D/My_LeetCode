@@ -8,7 +8,13 @@
 class Solution {
 public:
     int findTheWinner(int n, int k) {
-        
+        //约瑟夫环问题
+        //https://www.cnblogs.com/olajennings/p/12601844.html
+        int last = 0;
+        for (int i = 2; i <= n; i++) {
+            last = (last + k) % i;
+        }
+        return last + 1;
     }
 };
 // @lc code=end
