@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "tuple": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "vector": "cpp"
     }
 }
