@@ -18,8 +18,27 @@
  */
 class Solution {
 public:
-    vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+    //dfs
+    vector<vector<int>> ret;
+    vector<int> path;//存放当前路径
 
+    void dfs(TreeNode* root, int targetSum) {
+        if (root == nullptr) {
+            return;
+        }
+        path.emplace_back(root->val);
+        targetSum -= root->val;
+        if (root->left == nullptr && root->right == nullptr && targetSum == 0) {//叶子节点，路径和符合要求，将path存入ret
+            ret.emplace_back(path);
+        }
+        dfs(root->left, targetSum);
+        dfs(root->right, targetSum);
+        path.pop_back();//删除最后一个元素
+    }
+
+    vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+        dfs(root, targetSum);
+        return ret;
     }
 };
 // @lc code=end
