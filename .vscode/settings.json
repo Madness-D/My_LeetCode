@@ -2,6 +2,7 @@
     "files.associations": {
         "tuple": "cpp",
         "cstdlib": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "ios": "cpp"
     }
 }

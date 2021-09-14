@@ -14,18 +14,18 @@ public:
         int p1=0,p2=0;
         int l1=s.size(),l2=dic.size();
         while(p1<l1 && p2<l2){
+            
             if(s[p1]==dic[p2]){
-                p1++;p2++;
-            }else{
-                p1++;
+                p2++;
             }
+            p1++;
         }
         // if(p2==dic.size()-1){
         //     return true;
         // }else{
         //     return false;
         // }
-        return p2==dic.size();
+        return p2==dic.size();//不是-1
 
     }
     static bool cmp(string s1,string s2){
