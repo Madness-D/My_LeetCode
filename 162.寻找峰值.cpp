@@ -20,9 +20,19 @@ public:
         // }
         // return 0;
 
-        //返回最大值
-        //max_element 返回的是地址
-        return max_element(nums.begin(), nums.end()) - nums.begin();
+        // //返回最大值
+        // //max_element 返回的是地址  复杂度O(n)
+        // return max_element(nums.begin(), nums.end()) - nums.begin();
+
+        //二分法,遇到要求O(logn)的一般都是二分
+        int n=nums.size();
+        int l=0,r=n-1;
+        while(l<r){
+            int mid=(l+r)/2;
+            if(nums[mid]>nums[mid+1]) r=mid;
+            else l=mid+1;
+        }
+        return r;
     }
 };
 // @lc code=end
