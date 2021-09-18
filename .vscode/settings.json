@@ -3,6 +3,9 @@
         "tuple": "cpp",
         "cstdlib": "cpp",
         "vector": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "initializer_list": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp"
     }
 }
