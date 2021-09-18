@@ -34,6 +34,34 @@ public:
     //     return i + 1;
     // }
 
+    //堆
+    //建堆
+    void build_maxHeap(vector<int> & nums)
+    {
+        int n = nums.size();
+        for (int root = n/2; root > -1; root --)
+            adjust_down(nums, root, n - 1);
+    }
+    //维护堆
+    void adjust_down(vector<int> & nums, int root, int hi)
+    {
+        if (root > hi)
+            return ;
+        int t = nums[root];
+        int child = 2 * root + 1;
+        while (child <= hi)
+        {
+            if (child + 1 <= hi && nums[child] < nums[child + 1])
+                child ++;
+            if (t > nums[child])
+                break;
+            nums[root] = nums[child];
+            root = child;
+            child = 2 * root + 1;
+        }
+        nums[root] = t;
+    }
+
     int findKthLargest(vector<int>& nums, int k) {
 
         ////快排
@@ -46,6 +74,7 @@ public:
 
     //堆，调用优先队列
     //全部存入优先队列，然后popk次
+    //大顶堆
     //priority_queue<int,vector<int>,less<int>> maxHeap;
     // priority_queue<int> maxHeap;
     // for(int i=0;i<nums.size();i++){
@@ -56,10 +85,18 @@ public:
     // }
     // return maxHeap.top();
 
+    //堆，自己写维护程序
+        int n = nums.size();
+        build_maxHeap(nums);
+        for (int i = 0; i < k - 1; i ++)
+        {
+            swap(nums[0], nums[n-1-i]);
+            adjust_down(nums, 0, n-1-i - 1);
+        }
+        return nums[0];
 
 
-    
-    }
+    } 
 };
 
 // @lc code=end
