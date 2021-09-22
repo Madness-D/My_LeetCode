@@ -8,15 +8,20 @@
 class Solution {
 public:
     bool isPowerOfThree(int n) {
-        //递归
-        if(n%3!=0 && n!=1) return false;
-        if(n==2||n<1)return false;
-        if(n==3||n==1) return true;
-        else return isPowerOfThree(n/3);
+        // //递归
+        // if(n%3!=0 && n!=1) return false;
+        // if(n==2||n<1)return false;
+        // if(n==3||n==1) return true;
+        // else return isPowerOfThree(n/3);
 
         // //在题目给定的 3232 位有符号整数的范围内，最大的3 的幂为 3^{19} = 11622614673 我们只需要判断 n 是否是 3^{19}的约数即可
         // return n > 0 && 1162261467 % n == 0;
 
+        //试除法，不断/3
+        while(n && n%3==0){
+            n/=3;
+        }
+        return n==1;
     }
 };
 // @lc code=end
