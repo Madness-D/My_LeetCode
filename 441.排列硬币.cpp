@@ -8,11 +8,20 @@
 class Solution {
 public:
     int arrangeCoins(int n) {
-        long res=1;
-        while((1+res)*res/2<=n){
-            res++;
-        }
-        return res-1;
+        // //不用long，会溢出
+        // long res=1;
+        // while((1+res)*res/2<=n){
+        //     res++;
+        // }
+        // return res-1;
+
+        // long long ns=2*n;
+        // long long k=(long long) sqrt(ns);
+        // while((1+k)*k/2>n){
+        //     k--;
+        // }
+        // return k;
+        return ((sqrt((long long) 8 * n + 1) - 1) / 2);
 
     }
 };
