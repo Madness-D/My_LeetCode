@@ -8,10 +8,16 @@
 class Solution {
 public:
     int minMoves(vector<int>& nums) {
-        sort(nums.begin(),nums.end());
+        //其实只要知道最小值就行了，不需要排序
+        int min=INT_MAX;
+        for(int num:nums){
+            if(num<min)
+                min=num;
+        }
+        //sort(nums.begin(),nums.end());
         int res=0;
         for(int num:nums){
-            res+=num-nums[0];
+            res+=num-min;
         }
         return res;
     }
