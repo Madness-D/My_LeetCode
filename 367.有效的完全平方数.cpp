@@ -29,15 +29,27 @@ public:
         // }
         // return false;
 
-        //暴力
-        long x=1,squa=1;
-        while(squa<=num){
-            squa=x*x;
-            if(squa==num)
-                return true;
-            x++;
+        // //暴力
+        // long x=1,squa=1;
+        // while(squa<=num){
+        //     squa=x*x;
+        //     if(squa==num)
+        //         return true;
+        //     x++;
+        // }
+        // return false;
+
+ 
+        int l=1,r=num;
+        while(l<=r){
+            int mid=l+(r-l)/2;
+            //用double, 防止因为四舍五入出错了
+            if((double)num/mid==mid) return true;
+            else if(num/mid>mid) l=mid+1;
+            else r=mid-1;
         }
         return false;
+    
     }
 };
 // @lc code=end
