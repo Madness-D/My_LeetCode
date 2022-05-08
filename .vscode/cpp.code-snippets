@@ -27,7 +27,15 @@
 			"> Created Time:\t\t${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
 			"> Link:\t\t$1",
 			"> Description:\t\t$2",
-			"/*************************************************************************",
+			"*************************************************************************/",
+			"#include<bits/stdc++.h>",
+			"using namespace std;",
+			"",
+			"class Solution {",
+			"public:",
+			"\t$3",
+			"};",
+
 		],
 		"description": "LeetCode CPP 模板"
 	}
