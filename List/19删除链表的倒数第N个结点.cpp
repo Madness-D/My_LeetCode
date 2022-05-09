@@ -12,19 +12,35 @@ using namespace std;
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        ListNode* dummy=new ListNode(-1,head);
-        ListNode* fast=dummy;
-        while(n-- && fast){
-            fast=fast->next;
-        }
-        ListNode* slow=dummy;
+        // //两个指针，fast比slow提前n个结点，
+        // //则fast到达倒数第2个结点时slow即为要删除的结点的前一个结点
+        // ListNode* dummy=new ListNode(-1,head);//设置dummy结点
+        // ListNode* fast=dummy;
+        // while(n-- && fast){
+        //     fast=fast->next;
+        // }
+        // ListNode* slow=dummy;
 
-        while(fast->next){
-            fast=fast->next;
-            slow=slow->next;
-        }
+        // while(fast->next){
+        //     fast=fast->next;
+        //     slow=slow->next;
+        // }
         
-        if(slow->next)slow->next=slow->next->next;
+        // if(slow->next)slow->next=slow->next->next;
+        // return dummy->next;
+
+        //栈
+        ListNode * dummy=new ListNode(-1,head);
+        ListNode* curr=dummy;
+        stack<ListNode*> st;
+        while(curr){
+            st.push(curr);
+            curr=curr->next;
+        }
+        while(n--){
+            st.pop();
+        }
+        st.top()->next=st.top()->next->next;
         return dummy->next;
     }
 };
