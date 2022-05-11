@@ -6,6 +6,8 @@
         "ios": "cpp",
         "initializer_list": "cpp",
         "xstring": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp"
     }
 }
