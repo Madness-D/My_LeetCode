@@ -22,16 +22,19 @@ public:
         // }
         // return -1;
 
-        //暴力匹配
-        int  n=haystack.size(),m=needle.size();
-        for(int i=0;i+m<=n;i++){ //注意等号
-            bool flag=true;
-            for(int j=0;j<m;j++){
-                if(haystack[i+j]!=needle[j]) {flag=false;break;}
-            }
-            if(flag) return i;
-        }
-        return -1;
+        // //暴力匹配
+        // int  n=haystack.size(),m=needle.size();
+        // for(int i=0;i+m<=n;i++){ //注意等号
+        //     bool flag=true;
+        //     for(int j=0;j<m;j++){
+        //         if(haystack[i+j]!=needle[j]) {flag=false;break;}
+        //     }
+        //     if(flag) return i;
+        // }
+        // return -1;
+
+        //find函数
+        return haystack.find(needle,0);
 
         //todo: KMP
     }

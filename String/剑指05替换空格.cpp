@@ -12,11 +12,31 @@ using namespace std;
 class Solution {
 public:
     string replaceSpace(string s) {
-        string ans;
+        // string ans;
+        // for(char c:s){
+        //     if(c!=' ') ans.push_back(c);
+        //     else{ans+="%20";}
+        // }
+        // return ans;
+
+        //先预先给数组扩容带填充后的大小，然后在从后向前进行操作。
+        //优点： 无需额外空间、避免顺序操作时移动后续所有元素的操作
+        int cnt0=0;
         for(char c:s){
-            if(c!=' ') ans.push_back(c);
-            else{ans+="%20";}
+            if(c==' ') cnt0++;
         }
-        return ans;
+        int oldSize=s.size();
+        int newSize=oldSize+2*cnt0;
+        s.resize(newSize);
+        for(int r=s.size()-1,l=oldSize-1; l>=0;l--,r--){
+            if(s[l]!=' '){
+                s[r]=s[l];
+            }else{
+                s[r--]='0';
+                s[r--]='2';
+                s[r]='%';
+            }
+        }
+        return s;
     }
 };
