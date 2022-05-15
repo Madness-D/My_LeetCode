@@ -15,33 +15,36 @@ using namespace std;
 
 class Solution {
 public:
-    vector<vector<int>> threeSum(vector<int>& nums) {
+  vector<vector<int>> threeSum(vector<int>& nums) {
+        //先sort 再循环内嵌一个双指针遍历
         int len=nums.size();
         sort(nums.begin(),nums.end());
-
-        if(len<3 || nums[0]>0) return {};
-
         vector<vector<int>> ans;
-        for(int i=0;i<len;i++){
-            if(nums[i]>0) return ans;
-            if(i>0 && nums[i]==nums[i-1]) continue;
+
+        for(int i=0;i<len;i++){//外层循环
+            if(i>0 && nums[i]==nums[i-1]) continue; //去重
+            if(nums[i]>0 ) return ans; //若a>0则不可能总和==0
+
+            //双指针遍历nums[i]后面的元素
             int l=i+1,r=len-1;
-            int target=-nums[i];
             while(l<r){
-                int t=nums[l]+nums[r];
-                if(t==target) {
+                int t=nums[i]+nums[l]+nums[r];
+                if(t==0){ //找到一组
                     vector<int> vtt={nums[i],nums[l],nums[r]};
                     ans.emplace_back(vtt);
-                    while(l<r && nums[l]==nums[l+1]) l++;
+                    //后面的四个while循环都是为了去重，且如果没有l<r 这个条件，对于[0,0,0]会出错
+                    while(l<r && nums[l]==nums[l+1]) l++; 
                     while(l<r && nums[r]==nums[r-1]) r--;
+                    //执行上述两个循环后，l和r分别指向重复元素的边界（即，仍指向重复元素），因此需要分别再++、--
                     l++;r--;
-                    }
-                else if(t<target) {l++;
-                    while(l<r && nums[l]==nums[l-1]) l++;}
-                else {r--; 
-                    while(l<r && nums[r]==nums[r+1]) r--;}
+                 }else if(t<0){
+                     l++; //先移动指针再去重
+                     while(l<r && nums[l]==nums[l-1]) l++; //注意循环的条件，这时l指向的不是重复的元素
+                 }else{
+                     r--;
+                     while(l<r && nums[r]==nums[r+1]) r--; //同上
+                 }
             }
-
         }
         return ans;
     }
