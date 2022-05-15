@@ -17,7 +17,7 @@ public:
         // if(!head || !head->next) return head;
         // ListNode* newHead=reverseList(head->next);
         // head->next->next=head;
-        // head->next=nullptr;//避免成环
+        // head->next=nullptr;//避免成环 ⭐
         // return newHead;
 
         //迭代，事先存储其前一个节点。在更改引用之前，还需要存储后一个节点。最后返回新的头引用。
