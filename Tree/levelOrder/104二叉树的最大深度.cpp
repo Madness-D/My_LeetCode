@@ -12,20 +12,26 @@ using namespace std;
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
-        int layer=0;
-        if(!root) return layer;
-        queue<TreeNode*> qu;
-        qu.push(root);
-        while(!qu.empty()){
-            int len=qu.size();
-            for(int i=0;i<len;i++){
-                TreeNode* tnode=qu.front();
-                if(tnode->left) qu.push(tnode->left);
-                if(tnode->right) qu.push(tnode->right);
-                qu.pop();
-            }
-            layer++;
-        }
-        return layer;
+        ////层序遍历
+        // int layer=0;
+        // if(!root) return layer;
+        // queue<TreeNode*> qu;
+        // qu.push(root);
+        // while(!qu.empty()){
+        //     int len=qu.size();
+        //     for(int i=0;i<len;i++){
+        //         TreeNode* tnode=qu.front();
+        //         if(tnode->left) qu.push(tnode->left);
+        //         if(tnode->right) qu.push(tnode->right);
+        //         qu.pop();
+        //     }
+        //     layer++;
+        // }
+        // return layer;
+
+
+        //递归
+        if(!root) return 0;
+        return 1+max(maxDepth(root->left),maxDepth(root->right));
     }
 };
