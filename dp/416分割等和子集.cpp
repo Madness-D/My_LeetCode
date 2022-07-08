@@ -19,8 +19,10 @@ public:
         int sum=accumulate(nums.cbegin(), nums.cend(), 0);
         if(sum%2) return false;
         int target=sum/2;
-        //转换成01背包问题。
-        //区别在于，背包问题允许不装满
+
+        //01背包问题，一个数组，可以选，也可以不选，要求刚好凑够sum/2
+        //回顾，背包问题里，dp[i]表示容量为i时的最大价值
+        //dp[i]表示能否刚好凑够i
         vector<bool> dp(target,false);
         dp[0]=true;
  
@@ -31,6 +33,16 @@ public:
         }
 
         return dp[target];
+
+
+        //  //int数组，dp[i]表示容量为i时最多能装多少
+        // vector<int> dp(target+1,0);
+        // for(int i=0;i<n;i++){
+        //     for(int j=target;j>=nums[i];j--){
+        //         dp[j]=max(dp[j],dp[j-nums[i]]+nums[i]);
+        //     }
+        // }
+        // return dp[target]==target;
 
     }
 };

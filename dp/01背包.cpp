@@ -21,7 +21,7 @@ int main(){
 
 
 /*  二维的dp
-    //dp[i][j] 0-i物品，容量为j
+    //dp[i][j] 0-i物品，容量为j 能装的物品最大价值
     vector<vector<int>> dp(n,vector<int>(cap+1,0));
     //初始化
     //for(int i=0;i<n;i++) dp[i][0]=0;
@@ -42,6 +42,7 @@ int main(){
 
     //一维，滚动数组. 观察原来的递推公式，每一层可以重复利用上一层
     //重新定义一维dp： dp[j]表示容量为j的背包所背的最大价值
+    //      物品i，放或者不放
     //递推公式：  dp[j]=max(dp[j],dp[j-weight[i]]+value[i]);
     //仍然需要两次遍历，物品、容量；且容量需要逆序遍历，且必须先物品再容量
     vector<int> dp(cap+1,0);
