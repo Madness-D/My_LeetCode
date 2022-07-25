@@ -28,12 +28,13 @@ public:
         // return -1;
 
         //如果x到不了y+1（但能到y），那么从x到y的任一点出发都不可能到达y+1
+        //且如果y+1能到达终点，且gassum>costsum，则从y+1出发能够跑完全程
         int curSum = 0;
         int totalSum = 0;
         int start = 0;
         for (int i = 0; i < gas.size(); i++) {
             curSum += gas[i] - cost[i];
-            totalSum += gas[i] - cost[i];
+            totalSum += gas[i] - cost[i]; 
             if (curSum < 0) {   // 当前累加rest[i]和 curSum一旦小于0
                 start = i + 1;  // 起始位置更新为i+1
                 curSum = 0;     // curSum从0开始
